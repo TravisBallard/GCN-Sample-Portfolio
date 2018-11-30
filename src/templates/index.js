@@ -1,78 +1,77 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import CardList from '../components/CardList'
-import Card from '../components/Card'
-import Helmet from 'react-helmet'
+import config from '../utils/siteConfig'
+import WebsiteList from '../components/WebsiteList';
+import Website from '../components/Website';
+import SEO from '../components/SEO'
 import Container from '../components/Container'
 import Pagination from '../components/Pagination'
-import SEO from '../components/SEO'
-import config from '../utils/siteConfig'
+import Helmet from 'react-helmet'
 
 const Index = ({ data, pageContext }) => {
-  const posts = data.allContentfulPost.edges
-  const featuredPost = posts[0].node
+  const websites = data.allContentfulWebsite.edges;
+  const featuredWebsite = websites[0].node
   const { currentPage } = pageContext
   const isFirstPage = currentPage === 1
 
   return (
     <Layout>
-      <SEO />
-      {!isFirstPage && (
-        <Helmet>
-          <title>{`${config.siteTitle} - Page ${currentPage}`}</title>
-        </Helmet>
-      )}
-      <Container>
-        {isFirstPage ? (
-          <CardList>
-            <Card {...featuredPost} featured />
-            {posts.slice(1).map(({ node: post }) => (
-              <Card key={post.id} {...post} />
-            ))}
-          </CardList>
-        ) : (
-          <CardList>
-            {posts.map(({ node: post }) => (
-              <Card key={post.id} {...post} />
-            ))}
-          </CardList>
+      <div>
+        <SEO />
+        {!isFirstPage && (
+          <Helmet>
+            <title>{`${config.siteTitle} - Page ${currentPage}`}</title>
+          </Helmet>
         )}
-      </Container>
-      <Pagination context={pageContext} />
+        <Container>
+          {isFirstPage ? (
+            <WebsiteList>
+              <Website {...featuredWebsite} featured />
+              {websites.slice(1).map(({ node: website }) => (
+                <Website key={website.id} {...website} />
+              ))}
+            </WebsiteList>
+          ) : (
+            <WebsiteList>
+              {websites.map(({ node: website }) => (
+                <Website key={website.id} {...website} />
+              ))}
+            </WebsiteList>
+          )}
+        </Container>
+      </div>
     </Layout>
   )
 }
 
 export const query = graphql`
-  query($skip: Int!, $limit: Int!) {
-    allContentfulPost(
-      sort: { fields: [publishDate], order: DESC }
-      limit: $limit
-      skip: $skip
-    ) {
+  query {
+    allContentfulWebsite {
       edges {
         node {
-          title
-          id
-          slug
-          publishDate(formatString: "MMMM DD, YYYY")
+          id,
+          title,
+          description {
+            content {
+              nodeType,
+              content {
+                value
+                nodeType
+              }
+            }
+          },
           heroImage {
-            title
-            fluid(maxWidth: 1800) {
-              ...GatsbyContentfulFluid_withWebp_noBase64
+            id,
+            fluid {
+              src
             }
-          }
-          body {
-            childMarkdownRemark {
-              html
-              excerpt(pruneLength: 80)
-            }
-          }
+          },
+          url
         }
       }
     }
   }
 `
-
 export default Index
+

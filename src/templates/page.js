@@ -27,24 +27,5 @@ const PageTemplate = ({ data }) => {
   )
 }
 
-export const query = graphql`
-  query($slug: String!) {
-    contentfulPage(slug: { eq: $slug }) {
-      title
-      slug
-      metaDescription {
-        internal {
-          content
-        }
-      }
-      body {
-        childMarkdownRemark {
-          html
-          excerpt(pruneLength: 320)
-        }
-      }
-    }
-  }
-`
-
 export default PageTemplate
+

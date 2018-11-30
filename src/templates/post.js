@@ -25,6 +25,9 @@ const PostTemplate = ({ data, pageContext }) => {
   const previous = pageContext.prev
   const next = pageContext.next
 
+
+  console.log('data', data); // eslint-disable-line
+
   return (
     <Layout>
       <Helmet>
@@ -43,43 +46,5 @@ const PostTemplate = ({ data, pageContext }) => {
     </Layout>
   )
 }
-
-export const query = graphql`
-  query($slug: String!) {
-    contentfulPost(slug: { eq: $slug }) {
-      title
-      slug
-      metaDescription {
-        internal {
-          content
-        }
-      }
-      publishDate(formatString: "MMMM DD, YYYY")
-      publishDateISO: publishDate(formatString: "YYYY-MM-DD")
-      tags {
-        title
-        id
-        slug
-      }
-      heroImage {
-        title
-        fluid(maxWidth: 1800) {
-          ...GatsbyContentfulFluid_withWebp_noBase64
-        }
-        ogimg: resize(width: 1800) {
-          src
-          width
-          height
-        }
-      }
-      body {
-        childMarkdownRemark {
-          html
-          excerpt(pruneLength: 320)
-        }
-      }
-    }
-  }
-`
 
 export default PostTemplate
