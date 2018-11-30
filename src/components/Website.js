@@ -2,10 +2,9 @@ import React from "react"
 import styled from "styled-components"
 
 const Post = styled.li`
-  flex: 1
-  
-  border: 1px solid ${props => props.theme.colors.secondary};
-  border-radius: 2px;
+  flex: 1;
+  box-sizing: border-box;
+  border: 1px solid ${props => props.theme.colors.base};
   margin: 0 0 1em 0;
   transition: background 0.2s;
   list-style: none;
@@ -38,6 +37,12 @@ const Post = styled.li`
   img {
     max-width: 100%;
     width: 100%;
+  }
+  .contentWrapper {
+    padding: 10px;
+  }
+  .websiteTitle {
+    margin-top: 0;
   }
 `
 

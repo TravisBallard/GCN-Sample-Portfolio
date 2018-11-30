@@ -21,6 +21,7 @@ const Nav = styled.nav`
   li {
     display: inline-block;
     margin-left: 1em;
+    color: #fff;
     &:first-child {
       position: relative;
       margin: 0;
@@ -50,18 +51,11 @@ const Menu = () => {
       <Nav>
         <ul>
           <li>
+            Travis Ballard: Sample Portfolio
+          </li>
+          <li>
             <Link to="/" activeStyle={activeLinkStyle}>
               Home
-            </Link>
-          </li>
-          <li>
-            <Link to="/about/" activeStyle={activeLinkStyle}>
-              About
-            </Link>
-          </li>
-          <li>
-            <Link to="/contact/" activeStyle={activeLinkStyle}>
-              Contact
             </Link>
           </li>
         </ul>

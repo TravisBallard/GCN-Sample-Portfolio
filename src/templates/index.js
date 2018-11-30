@@ -6,7 +6,7 @@ import WebsiteList from '../components/WebsiteList';
 import Website from '../components/Website';
 import SEO from '../components/SEO'
 import Container from '../components/Container'
-import Pagination from '../components/Pagination'
+import Menu from '../components/Menu'
 import Helmet from 'react-helmet'
 
 const Index = ({ data, pageContext }) => {
@@ -14,6 +14,8 @@ const Index = ({ data, pageContext }) => {
   const featuredWebsite = websites[0].node
   const { currentPage } = pageContext
   const isFirstPage = currentPage === 1
+
+  console.log('websites', websites); // eslint-disable-line
 
   return (
     <Layout>
@@ -24,6 +26,7 @@ const Index = ({ data, pageContext }) => {
             <title>{`${config.siteTitle} - Page ${currentPage}`}</title>
           </Helmet>
         )}
+        <Menu/>
         <Container>
           {isFirstPage ? (
             <WebsiteList>
