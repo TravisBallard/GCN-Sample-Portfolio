@@ -51,7 +51,9 @@ const Website = ({id, title, url, heroImage, description, ...props}) => {
   return (
     <Post featured={props.featured}>
       <div className="imageWrapper">
-        <img src={heroImage.fluid.src} alt='' />
+        {heroImage ? (
+          <img src={heroImage.fluid.src} alt='' />
+        ) : false}
       </div>
       <div className="contentWrapper">
         <h2 className="websiteTitle">{title}</h2>
