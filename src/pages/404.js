@@ -16,18 +16,20 @@ const Text = styled.p`
 
 const NotFoundPage = () => (
   <Layout>
-    <Helmet>
-      <title>404 - Page Not Found</title>
-      <meta name="description" content="Page not found" />
-    </Helmet>
+    <div>
+      <Helmet>
+        <title>404 - Page Not Found</title>
+        <meta name="description" content="Page not found" />
+      </Helmet>
 
-    <Container>
-      <PageTitle>Page Not Found</PageTitle>
-      <Text>
-        Please return <Link to="/">home</Link> or use the menu to navigate to a
-        different page.
-      </Text>
-    </Container>
+      <Container>
+        <PageTitle>Page Not Found</PageTitle>
+        <Text>
+          Please return <Link to="/">home</Link> or use the menu to navigate to a
+          different page.
+        </Text>
+      </Container>
+    </div>
   </Layout>
 )
 

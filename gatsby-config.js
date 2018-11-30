@@ -46,15 +46,15 @@ module.exports = {
           {
             resolve: `gatsby-remark-prismjs`,
           },
-          `gatsby-remark-autolink-headers`,
-          {
-            resolve: `gatsby-remark-images-contentful`,
-            options: {
-              maxWidth: 650,
-              backgroundColor: 'white',
-              linkImagesToOriginal: false,
-            },
-          },
+          // `gatsby-remark-autolink-headers`,
+          // {
+          //   resolve: `gatsby-remark-images-contentful`,
+          //   options: {
+          //     maxWidth: 650,
+          //     backgroundColor: 'white',
+          //     linkImagesToOriginal: false,
+          //   },
+          // },
         ],
       },
     },
