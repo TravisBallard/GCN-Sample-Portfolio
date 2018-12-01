@@ -47,7 +47,7 @@ const Post = styled.li`
   }
 `
 
-const Website = ({id, slug, title, url, heroImage, description, ...props}) => {
+const WebsiteCard = ({id, slug, title, url, heroImage, description, ...props}) => {
   const websiteDescription = description.content[0].content[0].value;
 
   const image = heroImage ? (
@@ -70,4 +70,4 @@ const Website = ({id, slug, title, url, heroImage, description, ...props}) => {
   )
 }
 
-export default Website
+export default WebsiteCard

@@ -2,12 +2,13 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import config from '../utils/siteConfig'
-import WebsiteList from '../components/WebsiteList';
-import Website from '../components/Website';
+import WebsiteCard from '../components/WebsiteCard';
 import SEO from '../components/SEO'
 import Container from '../components/Container'
 import Menu from '../components/Menu'
 import Helmet from 'react-helmet'
+import Footer from "../components/Footer";
+import CardList from '../components/CardList'
 
 const Index = ({ data, pageContext }) => {
   const websites = data.allContentfulWebsite.edges;
@@ -29,20 +30,21 @@ const Index = ({ data, pageContext }) => {
         <Menu/>
         <Container>
           {isFirstPage ? (
-            <WebsiteList>
-              <Website {...featuredWebsite} featured />
+            <CardList>
+              <WebsiteCard {...featuredWebsite} featured />
               {websites.slice(1).map(({ node: website }) => (
-                <Website key={website.id} {...website} />
+                <WebsiteCard key={website.id} {...website} />
               ))}
-            </WebsiteList>
+            </CardList>
           ) : (
-            <WebsiteList>
+            <CardList>
               {websites.map(({ node: website }) => (
-                <Website key={website.id} {...website} />
+                <WebsiteCard key={website.id} {...website} />
               ))}
-            </WebsiteList>
+            </CardList>
           )}
         </Container>
+        <Footer/>
       </div>
     </Layout>
   )

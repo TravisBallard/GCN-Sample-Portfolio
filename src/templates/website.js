@@ -8,6 +8,9 @@ import Container from '../components/Container'
 import PostLinks from '../components/PostLinks'
 import PostDate from '../components/PostDate'
 import SEO from '../components/SEO'
+import Menu from "../components/Menu";
+import Footer from "../components/Footer";
+import Button from '../components/Button'
 
 const WebsiteTemplate = ({ data, pageContext }) => {
   const {
@@ -16,6 +19,7 @@ const WebsiteTemplate = ({ data, pageContext }) => {
     heroImage,
     publishDate,
     description,
+    url,
   } = data.contentfulWebsite
   const postNode = data.contentfulWebsite
 
@@ -29,15 +33,17 @@ const WebsiteTemplate = ({ data, pageContext }) => {
           <title>{`${title} - ${config.siteTitle}`}</title>
         </Helmet>
 
+        <Menu/>
         <Hero title={title} image={heroImage} height={'50vh'} />
 
         <Container>
-          <PostDate date={publishDate} />
+          <PostDate date={publishDate} url={url}/>
           <div>
             {description.content[0].content[0].value}
           </div>
         </Container>
         <PostLinks previous={previous} next={next} />
+        <Footer/>
       </div>
     </Layout>
   )
@@ -48,6 +54,7 @@ export const query = graphql`
     contentfulWebsite(slug: { eq: $slug }) {
       title
       slug
+      url
       publishDate(formatString: "MMMM DD, YYYY")
       publishDateISO: publishDate(formatString: "YYYY-MM-DD")
       description {

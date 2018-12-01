@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Button from "./Button";
 
 const Wrapper = styled.div`
   margin: 0 auto 2em;
@@ -16,6 +17,7 @@ const Date = styled.p`
 const PostDate = props => {
   return (
     <Wrapper>
+      <Button btnHref={props.url} btnTxt={`Visit Website`}></Button>
       <Date>
         <span>Published:</span> {props.date}
       </Date>
