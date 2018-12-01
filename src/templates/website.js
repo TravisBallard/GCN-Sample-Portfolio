@@ -7,10 +7,14 @@ import Hero from '../components/Hero'
 import Container from '../components/Container'
 import PostLinks from '../components/PostLinks'
 import PostDate from '../components/PostDate'
-import SEO from '../components/SEO'
-import Menu from "../components/Menu";
-import Footer from "../components/Footer";
-import Button from '../components/Button'
+import Menu from "../components/Menu"
+import Footer from "../components/Footer"
+import styled from 'styled-components'
+import PageBody from "../components/PageBody";
+
+const DescriptionWrapper = styled.p`
+  padding: 0 30px;
+`
 
 const WebsiteTemplate = ({ data, pageContext }) => {
   const {
@@ -38,9 +42,7 @@ const WebsiteTemplate = ({ data, pageContext }) => {
 
         <Container>
           <PostDate date={publishDate} url={url}/>
-          <div>
-            {description.content[0].content[0].value}
-          </div>
+          <PageBody body={description}/>
         </Container>
         <PostLinks previous={previous} next={next} />
         <Footer/>
@@ -58,12 +60,9 @@ export const query = graphql`
       publishDate(formatString: "MMMM DD, YYYY")
       publishDateISO: publishDate(formatString: "YYYY-MM-DD")
       description {
-        content {
-          nodeType
-          content {
-            value
-            nodeType
-          }
+        childMarkdownRemark {
+          html
+          excerpt(pruneLength: 320)
         }
       }
       heroImage {

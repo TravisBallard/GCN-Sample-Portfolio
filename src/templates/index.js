@@ -51,7 +51,7 @@ const Index = ({ data, pageContext }) => {
 }
 
 export const query = graphql`
-  query {
+query {
   allContentfulWebsite(sort: {fields: [publishDate], order: DESC}) {
     edges {
       node {
@@ -61,12 +61,9 @@ export const query = graphql`
         publishDateISO: publishDate(formatString: "YYYY-MM-DD")
         title
         description {
-          content {
-            nodeType
-            content {
-              value
-              nodeType
-            }
+          childMarkdownRemark {
+            html
+            excerpt(pruneLength: 100)
           }
         }
         heroImage {

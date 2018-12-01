@@ -48,7 +48,7 @@ const Post = styled.li`
 `
 
 const WebsiteCard = ({id, slug, title, url, heroImage, description, ...props}) => {
-  const websiteDescription = description.content[0].content[0].value;
+
 
   const image = heroImage ? (
       <div className="imageWrapper">
@@ -63,7 +63,7 @@ const WebsiteCard = ({id, slug, title, url, heroImage, description, ...props}) =
         {image}
         <div className="contentWrapper">
           <h2 className="websiteTitle">{title}</h2>
-          <div className="websiteDescription">{websiteDescription}</div>
+          <div className="websiteDescription" dangerouslySetInnerHTML={{ __html: description.childMarkdownRemark.excerpt }}/>
         </div>
       </Link>
     </Post>
