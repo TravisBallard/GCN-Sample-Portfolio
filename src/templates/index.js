@@ -50,7 +50,9 @@ const Index = ({ data, pageContext }) => {
 
 export const query = graphql`
   query {
-    allContentfulWebsite {
+    allContentfulWebsite(
+      sort: { fields: [publishDate], order: DESC }
+    ) {
       edges {
         node {
           id,

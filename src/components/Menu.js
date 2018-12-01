@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
+import config from '../utils/siteConfig'
 
 const Header = styled.header`
   background: ${props => props.theme.colors.base};
@@ -50,9 +51,7 @@ const Menu = () => {
     <Header>
       <Nav>
         <ul>
-          <li>
-            Travis Ballard: Sample Portfolio
-          </li>
+          <li>{config.siteTitle}</li>
           <li>
             <Link to="/" activeStyle={activeLinkStyle}>
               Home

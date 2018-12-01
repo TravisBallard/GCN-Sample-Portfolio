@@ -9,6 +9,9 @@ import PageBody from '../components/PageBody'
 import SEO from '../components/SEO'
 
 const PageTemplate = ({ data }) => {
+
+  if (!data) return null;
+
   const { title, slug, body } = data.contentfulPage
   const postNode = data.contentfulPage
 

@@ -1,10 +1,10 @@
 module.exports = {
-  siteTitle: 'Sample Portfolio',
+  siteTitle: 'Travis Ballard: Sample Portfolio',
   siteTitleAlt: 'Sample Portfolio Wesbite', // This allows an alternative site title for SEO schema.
   publisher: 'Travis Ballard', // Organization name used for SEO schema
   siteDescription:
     'A starter template to build amazing static websites with Gatsby, Contentful and Netlify',
-  siteUrl: 'https://gcn.netlify.com', // Site domain. Do not include a trailing slash! If you wish to use a path prefix you can read more about that here: https://www.gatsbyjs.org/docs/path-prefix/
+  siteUrl: 'https://sample-portfolio.netlify.com', // Site domain. Do not include a trailing slash! If you wish to use a path prefix you can read more about that here: https://www.gatsbyjs.org/docs/path-prefix/
   postsPerHomePage: 7, // Number of posts shown on the 1st page of of the index.js template (home page)
   postsPerPage: 6, // Number of posts shown on paginated pages
   author: 'Travis Ballard', // Author for RSS author segment and SEO schema
