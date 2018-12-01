@@ -48,13 +48,17 @@ const Post = styled.li`
 
 const Website = ({id, title, url, heroImage, description, ...props}) => {
   const websiteDescription = description.content[0].content[0].value;
+
+  const image = heroImage ? (
+      <div className="imageWrapper">
+        <img src={heroImage.fluid.src} alt='' />
+      </div>
+    ) :
+      false;
+
   return (
     <Post featured={props.featured}>
-      <div className="imageWrapper">
-        {heroImage ? (
-          <img src={heroImage.fluid.src} alt='' />
-        ) : false}
-      </div>
+      {image}
       <div className="contentWrapper">
         <h2 className="websiteTitle">{title}</h2>
         <div className="websiteDescription">{websiteDescription}</div>
