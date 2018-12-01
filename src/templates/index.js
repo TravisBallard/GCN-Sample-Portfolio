@@ -50,33 +50,41 @@ const Index = ({ data, pageContext }) => {
 
 export const query = graphql`
   query {
-    allContentfulWebsite(
-      sort: { fields: [publishDate], order: DESC }
-    ) {
-      edges {
-        node {
-          id,
-          title,
-          description {
+  allContentfulWebsite(sort: {fields: [publishDate], order: DESC}) {
+    edges {
+      node {
+        id
+        slug
+        publishDate(formatString: "MMMM DD, YYYY")
+        publishDateISO: publishDate(formatString: "YYYY-MM-DD")
+        title
+        description {
+          content {
+            nodeType
             content {
-              nodeType,
-              content {
-                value
-                nodeType
-              }
+              value
+              nodeType
             }
-          },
-          heroImage {
-            id,
-            fluid {
-              src
-            }
-          },
-          url
+          }
         }
+        heroImage {
+          title
+          fluid(maxWidth: 960) {
+            src
+          },
+          ogimg: resize(width: 960) {
+            src
+            width
+            height
+          }
+        }
+        url
       }
     }
   }
+}
+
+
 `
 export default Index
 

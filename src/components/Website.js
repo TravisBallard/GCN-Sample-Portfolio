@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { Link } from 'gatsby'
 
 const Post = styled.li`
   flex: 1;
@@ -46,7 +47,7 @@ const Post = styled.li`
   }
 `
 
-const Website = ({id, title, url, heroImage, description, ...props}) => {
+const Website = ({id, slug, title, url, heroImage, description, ...props}) => {
   const websiteDescription = description.content[0].content[0].value;
 
   const image = heroImage ? (
@@ -58,11 +59,13 @@ const Website = ({id, title, url, heroImage, description, ...props}) => {
 
   return (
     <Post featured={props.featured}>
-      {image}
-      <div className="contentWrapper">
-        <h2 className="websiteTitle">{title}</h2>
-        <div className="websiteDescription">{websiteDescription}</div>
-      </div>
+      <Link to={`/${slug}`}>
+        {image}
+        <div className="contentWrapper">
+          <h2 className="websiteTitle">{title}</h2>
+          <div className="websiteDescription">{websiteDescription}</div>
+        </div>
+      </Link>
     </Post>
   )
 }
