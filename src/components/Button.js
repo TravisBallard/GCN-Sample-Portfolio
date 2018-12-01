@@ -46,7 +46,7 @@ const ButtonWrapper = styled.a`
 
 const Button = props => {
   return (
-    <ButtonWrapper className={`button`} href={props.btnHref} target={`_blank`}>{props.btnTxt}</ButtonWrapper>
+    <ButtonWrapper className={`button`} href={props.href} target={`_blank`}>{props.text}</ButtonWrapper>
   )
 }
 

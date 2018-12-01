@@ -17,7 +17,7 @@ const Date = styled.p`
 const PostDate = props => {
   return (
     <Wrapper>
-      <Button btnHref={props.url} btnTxt={`Visit Website`}></Button>
+      <Button href={props.url} text={`Visit Website`}></Button>
       <Date>
         <span>Published:</span> {props.date}
       </Date>
